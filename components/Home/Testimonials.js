@@ -79,7 +79,7 @@ const LogiscoSlideshow = () => {
   };
 
   // Remove margin-left on last stats div on mobile
-  const lastDivMobileStyle = isMobile ? { marginLeft: 0 } : {};
+
 
   return (
     <section id="cases" className="bg-gray-50">
