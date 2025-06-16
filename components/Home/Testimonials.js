@@ -1,26 +1,13 @@
 
 
-
-
 "use client";
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 
 const LogiscoSlideshow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile screen size
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 640);
-    };
-
-    checkMobile();
-
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   const slides = [
     {
@@ -57,28 +44,22 @@ const LogiscoSlideshow = () => {
     },
   ];
 
+
   const handlePrevious = useCallback(() => {
     setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? slides.length - 1 : prevIndex - 1
     );
   }, [slides.length]);
 
+
   const handleNext = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
   }, [slides.length]);
 
+
   const handleDotClick = useCallback((index) => {
     setCurrentIndex(index);
   }, []);
-
-  // Inline styles for mobile stats layout
-  const mobileStatsStyles = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "1.5rem",
-  };
-
-  // Remove margin-left on last stats div on mobile
 
 
   return (
@@ -105,6 +86,7 @@ const LogiscoSlideshow = () => {
           </div>
         </div>
 
+
         {/* Slides container with responsive layout and custom class */}
         <div className="slides-container flex flex-col sm:flex-row sm:flex-wrap md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 items-stretch h-auto md:h-[400px]">
           {slides.map((slide, index) => (
@@ -129,6 +111,7 @@ const LogiscoSlideshow = () => {
                 <div className="w-full h-full bg-gradient-to-br from-white/20 to-transparent"></div>
               </div>
 
+
               <div className="relative p-6 flex flex-col justify-between h-full">
                 {/* Top row */}
                 <div className="flex justify-between items-start mt-56">
@@ -142,13 +125,16 @@ const LogiscoSlideshow = () => {
                   )}
                 </div>
 
+
                 {/* Illustration Placeholder */}
                 <div className="flex-1 flex items-center justify-center my-4">
                   {/* Optional: Your existing conditionals for illustrations go here */}
                 </div>
 
+
                 <p className="text-white text-lg leading-tight">{slide.title}</p>
               </div>
+
 
               {/* Selection Overlay */}
               {index === currentIndex && (
@@ -157,6 +143,7 @@ const LogiscoSlideshow = () => {
             </div>
           ))}
         </div>
+
 
         {/* Slide Indicators */}
         <div className="flex justify-center mt-8 gap-2">
@@ -172,26 +159,17 @@ const LogiscoSlideshow = () => {
           ))}
         </div>
 
-{/* Stats */}
-<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-black mt-8">
-  <div>
-    <div className="text-4xl font-bold text-primary">500+</div>
-    <div className="text-2xl opacity-80">Happy Clients</div>
-  </div>
-  <div>
-    <div className="text-4xl font-bold text-primary text-black">50K+</div>
-    <div className="text-2xl opacity-80 text-black">Delivered Packages</div>
-  </div>
-  <div className="">
-    <div className="text-4xl font-bold text-primary ">99%</div>
-    <div className="text-2xl opacity-80">Success Rate</div>
-  </div>
-</div>
 
+     
+      
 
+        
       </div>
     </section>
   );
 };
 
+
 export default LogiscoSlideshow;
+
+
