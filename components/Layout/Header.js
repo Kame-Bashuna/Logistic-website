@@ -26,7 +26,7 @@ const Header = () => {
                 <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
               </div>
             </div>
-            <span className="text-orange-500 text-2xl font-bold">Logisco</span>
+            <span className="text-teal-700 text-2xl font-bold">Logisco</span>
           </div>
 
           {/* Desktop Navigation */}
