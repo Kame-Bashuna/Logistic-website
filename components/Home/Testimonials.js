@@ -3,11 +3,24 @@
 
 
 "use client";
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const LogiscoSlideshow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile screen size
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640);
+    };
+
+    checkMobile();
+
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const slides = [
     {
@@ -57,6 +70,16 @@ const LogiscoSlideshow = () => {
   const handleDotClick = useCallback((index) => {
     setCurrentIndex(index);
   }, []);
+
+  // Inline styles for mobile stats layout
+  const mobileStatsStyles = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "1.5rem",
+  };
+
+  // Remove margin-left on last stats div on mobile
+  const lastDivMobileStyle = isMobile ? { marginLeft: 0 } : {};
 
   return (
     <section id="cases" className="bg-gray-50">
@@ -149,21 +172,23 @@ const LogiscoSlideshow = () => {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-6 text-black mt-8">
-          <div>
-            <div className="text-4xl font-bold text-primary">500+</div>
-            <div className="text-2xl opacity-80">Happy Clients</div>
-          </div>
-          <div>
-            <div className="text-4xl font-bold text-primary text-black">50K+</div>
-            <div className="text-2xl opacity-80 text-black">Delivered Packages</div>
-          </div>
-          <div className="ml-18">
-            <div className="text-4xl font-bold text-primary ">99%</div>
-            <div className="text-2xl opacity-80">Success Rate</div>
-          </div>
-        </div>
+{/* Stats */}
+<div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-black mt-8">
+  <div>
+    <div className="text-4xl font-bold text-primary">500+</div>
+    <div className="text-2xl opacity-80">Happy Clients</div>
+  </div>
+  <div>
+    <div className="text-4xl font-bold text-primary text-black">50K+</div>
+    <div className="text-2xl opacity-80 text-black">Delivered Packages</div>
+  </div>
+  <div className="">
+    <div className="text-4xl font-bold text-primary ">99%</div>
+    <div className="text-2xl opacity-80">Success Rate</div>
+  </div>
+</div>
+
+
       </div>
     </section>
   );
