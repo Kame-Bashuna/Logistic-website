@@ -8,7 +8,7 @@
 "use client";
 import React, { useState, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { section } from "framer-motion/client";
+
 
 const LogiscoSlideshow = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

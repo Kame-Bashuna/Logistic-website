@@ -1,8 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Check } from 'lucide-react';
-import { section } from 'framer-motion/client';
-import { link } from 'fs';
-import Link from 'next/link';
+
 
 export default function Footer() {
   return (

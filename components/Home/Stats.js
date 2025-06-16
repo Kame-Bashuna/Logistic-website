@@ -4,7 +4,7 @@ import { section } from 'framer-motion/client';
 
 const DeliveryBanner = () => {
   return (
-    <section id="">
+   
     <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-lg">
       {/* Background Image */}
       <div className="absolute inset-0 -z-10">
@@ -70,7 +70,7 @@ const DeliveryBanner = () => {
       <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/20 to-transparent"></div>
     </div>
 
-</section>
+
 
   );
 };
